@@ -2,27 +2,19 @@
 <!doctype html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Album example · Bootstrap</title>
+    <title>Elio's Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
 
     <!-- Bootstrap core CSS -->
     <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <!-- Favicons -->
-    <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.5/assets/img/favicons/favicon.ico">
-    <meta name="msapplication-config" content="https://getbootstrap.com/docs/4.5/assets/img/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#563d7c">
 
 
     <style>
@@ -47,20 +39,20 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Elio Rahy</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Elio Rahy</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Instagram</a>
+                    <a class="nav-link" href="https://www.instagram.com/elio.rahy/">Instagram</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Resume</a>
+                    <a class="nav-link" href="{% static 'ELIO CV.pdf' %}">Resume</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Blog</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
                 </li>
             </ul>
         </div>
@@ -76,12 +68,12 @@
         <h2> Latest Posts</h2>
         <hr />
         {% for blog in blogs.all %}
-       <h3> <a href="">{{blog.title}}</a></h3>
-        {{blog.pub_date}}
+        <h3> <a href="{% url 'detail' blog.id %}">{{blog.title}}</a></h3>
+        {{blog.pub_date_pretty}}
         <br>
         <img class="img-fluid" height = "200" width="200" src="{{blog.image.url}}"/>
         <br />
-        <p>{{blog.body}}</p>
+        <p>{{blog.summary}}</p>
         {% endfor %}
 
 

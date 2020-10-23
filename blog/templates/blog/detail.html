@@ -1,14 +1,14 @@
-<!doctype html>
 
-    {% load static %}
+<!doctype html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Elio el Rahy</title>
+    <title>{{ blog.title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
 
@@ -16,7 +16,14 @@
     <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
 
+
     <style>
+        .centeroni {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+        }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -50,7 +57,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% static 'ELIO CV.pdf' %}">Resume</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
                 </li>
             </ul>
@@ -59,38 +66,17 @@
 </header>
 
 <main role="main">
+    <div class="container">
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1>Hi, I'm Elio.</h1>
-            <p class="lead text-muted">My name is Elio el Rahy, I am a Junior Web Developer from Beirut, Lebanon.
-            I enjoy taking complex problems and turn them to beautiful designs and I thrive to write efficient and well-structured code no matter what language.</p>
-            <p>
-                <a href="mailto:eliorahy1@gmail.com" class="btn btn-primary my-2">Email me</a>
-            </p>
-            <img src="{% static 'picture.png' %}" height="300"/>
-        </div>
-    </section>
 
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row">
+        <h1 class="text-center pt-3">{{blog.title}}</h1>
 
-                {% for job in jobs.all %}
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{job.image.url }}">
-                        <div class="card-body">
-                            <p class="card-text">{{ job.summary }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
+        <p class="text-center" style="align: center;">{{blog.pub_date}}</p>
+        <img class="img-fluid centeroni" src="{{blog.image.url}}"/>
+        <br />
+        <p class="text-center">{{blog.body}}</p>
 
-            </div>
-        </div>
+
     </div>
 </main>
 
